@@ -22,9 +22,17 @@ def read_data(file_name, field):
     
     file_path = cwd_path / file_name
 
+    with open (file_path, "r") as json_file:
+        data_json=json.load(json_file)
+        if field in data_json.keys():
+            return data_json[field]
+        else:
+            return None
+
 
 def main():
-    pass
+    my_data=read_data("sequential.json", "unordered_numbers")
+    print(my_data)
 
 
 if __name__ == "__main__":
